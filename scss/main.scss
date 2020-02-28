@@ -1,0 +1,1304 @@
+:root {
+  --wrapper: 192rem;
+  --container: 124rem;
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Montserrat", sans-serif;
+  --third-font: "Kaushan Script", cursive;
+  --primary-color: #f38181;
+  --secondary-color: #95e1d3;
+  --third-color: #fce38a;
+  --gray-dark: #333;
+  --gray-light: #999;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  line-height: 1.4;
+  font-family: var(--primary-font);
+  font-weight: 400;
+  color: var(--gray-dark);
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.wrapper {
+  max-width: var(--wrapper);
+  margin: 0 auto;
+}
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+//Header ////////////////////////////////////////////////////////////////////////////////
+.header {
+  height: 100vh;
+  @keyframes animatedBackground {
+    0%{ background-position: 0 0; }
+    50% { background-position: -192rem 0 }
+    100%{ background-position: 0 0; }
+  }
+  @media screen and (min-width: 768px) {
+    min-height: 100vh;
+  }
+  background-image: linear-gradient(
+      to bottom,
+      rgba(230, 131, 131, 0.8),
+      rgba(241, 217, 137, 0.8)
+    ),
+    url("../images/header-bg.jpg");
+  // background-size: cover;
+  // background-repeat: repeat-x;
+  background-position: center center;
+  // -webkit-animation: animatedBackground 100s linear infinite;
+  // -moz-animation: animatedBackground 100s linear infinite;
+  // animation: animatedBackground 100s linear infinite;
+  background-attachment: fixed;
+  padding-top: 3rem;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    &-nav {
+      display: none;
+      cursor: pointer;
+      color: white;
+      @media screen and (max-width: 767px) {
+        display: block;
+        font-size: 3.4rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      align-items: center;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+      align-items: baseline;
+    }
+    &__item {
+      &:not(:first-child) {
+        margin-left: 5.5rem;
+      }
+      font-size: 1.4rem;
+      // Active first item :
+      // &:first-of-type{
+      //   .nav__link{color: var(--third-color);
+      //     border-bottom-color: currentColor;
+      //   }
+      // }
+    }
+
+    &__link {
+      font-family: var(--secondary-font);
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding-bottom: 1.2rem;
+      border-bottom: 0.3rem solid transparent;
+      // transition: 0.2s;
+      transition: color 0.2s linear, border 0.2s linear;
+
+      &:hover {
+        color: var(--third-color);
+        border-bottom-color: var(--third-color);
+      }
+    }
+    &__cart,
+    &__search {
+      position: relative;
+      color: white;
+      i {
+        cursor: pointer;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  &__content {
+    max-width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 5rem;
+
+    &-slogan {
+      font-size: 7.2rem;
+      font-family: var(--third-font);
+      margin-bottom: 2.5rem;
+      // flex-direction: row;
+      @media screen and (max-width: 767px) {
+        font-size: 3.2rem;
+      }
+    }
+    &-title {
+      max-width: 80.5rem;
+      margin: 0 auto 4rem; // top right,left bottom
+      padding-bottom: 4rem;
+      font-size: 15rem;
+      text-transform: uppercase;
+      line-height: 0.9; // 0.9 or 14rem
+      font-family: var(--secondary-font);
+      font-weight: bold;
+      position: relative;
+      &:after {
+        content: "";
+        width: 6rem;
+        height: 0.3rem;
+        background-color: white;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+      }
+      @media screen and (max-width: 1024px) {
+        font-size: 9rem;
+        padding-bottom: 4rem;
+      }
+      @media screen and (max-width: 767px) {
+        font-size: 5rem;
+        padding-bottom: 4rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      padding-top: 8rem;
+    }
+  }
+  .slider__nav {
+    display: flex;
+    margin-top: 5.5rem;
+    justify-content: space-between;
+    width: 100%;
+    &-item {
+      // width: calc(25% - 22.5px);
+      width: 28rem;
+      font-family: var(--secondary-font);
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      border-top: 3px solid white;
+      opacity: 0.75;
+      text-align: left;
+      position: relative;
+      cursor: pointer;
+      strong {
+        font-weight: bold;
+        font-size: 2.4rem;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 7rem;
+        height: 3px;
+        background-color: transparent;
+      }
+      &.is-active {
+        opacity: 1;
+        &:before {
+          background-color: var(--primary-color);
+        }
+      }
+    }
+    @media screen and (max-width: 767px) {
+      margin-top: 5rem;
+      display: none;
+    }
+  }
+}
+//Button Learn More ////////////////////////////////////////////////////////////////////////////////
+.btn {
+  display: inline-block;
+  color: white;
+  text-transform: uppercase;
+  border: 0;
+  outline: none;
+  font-size: 1.4rem;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem 3rem;
+  letter-spacing: 0.5px;
+  &--transparent {
+    background-color: transparent;
+  }
+  &--border {
+    border: 0.3rem solid currentColor;
+  }
+}
+
+// Phần Heading Dùng Chung ////////////////////////////////////////////////////////////////////////////////
+
+.heading__paddingtop {
+  padding-top: 11rem;
+  @media screen and (max-width: 768px) {
+    padding-top: 5rem;
+  }
+}
+.heading {
+  max-width: 120rem;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  &__slogan {
+    display: block;
+    font-family: var(--third-font);
+    font-size: 2.4rem;
+    //margin-top: 11rem;
+    margin-bottom: 2.4rem;
+  }
+  &__title {
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding-bottom: 4rem;
+    position: relative;
+  }
+  &__title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0.3rem;
+    width: 6rem;
+    background-color: var(--primary-color);
+  }
+  &__desc {
+    max-width: 95.5rem;
+    font-family: var(--primary-font);
+    color: var(--gray-light);
+    font-size: 1.5rem;
+    margin: 0 auto;
+    margin-top: 4.5rem;
+    margin-bottom: 9rem;
+    @media screen and (max-width: 767px) {
+      margin-bottom: 3.5rem;
+      margin-top: 3rem;
+    }
+  }
+}
+
+// Phan About Chinh Sua ////////////////////////////////////////////////////////////////////////////////
+.about {
+  margin-bottom: 11rem;
+  &__list {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    position: relative;
+    transition: 0.2s;
+    width: 32%;
+    cursor: pointer;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      @media screen and (max-width: 767px) {
+        height: auto;
+      }
+    }
+    &-content {
+      position: absolute;
+      transition: 0.2s;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(230, 131, 131, 0.8),
+        rgba(241, 217, 137, 0.8)
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      i,span{
+        font-size: 2rem;
+        color: white;
+      }
+    }
+    &:after {
+      position: absolute;
+      transition: 0.2s;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--secondary-color);
+      z-index: -1;
+    }
+    &:hover {
+      transform: translate(10px, 10px);
+      &:after {
+        transform: translate(-10px, -10px);
+      }
+      .about__item-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Phần Summary ////////////////////////////////////////////////////////////////////////////////
+.summary {
+  background-color: var(--secondary-color);
+  // height: 27rem;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 24rem;
+    height: 27rem;
+    border-left: 1px solid #b5eae0;
+    &:last-child {
+      border-right: 1px solid #b5eae0;
+    }
+    strong {
+      display: block;
+      // padding-top: 7rem;
+      // padding-bottom: 1rem;
+      font-family: var(--secondary-font);
+      font-size: 7.2rem;
+      font-weight: bold;
+      color: white;
+    }
+    span {
+      display: block;
+      font-family: var(--secondary-font);
+      font-size: 1.4rem;
+      color: white;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    &__list {
+      flex-direction: column;
+    }
+    &__item {
+      width: 100%;
+      border-left: none;
+      border-bottom: 1px solid #b5eae0;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+// Phần Amazing ////////////////////////////////////////////////////////////////////////////////
+.amazing {
+  &__margin-top {
+    margin-top: 6.5rem;
+    @media screen and (max-width: 767px) {
+      margin-bottom: 2rem;
+    }
+  }
+  &__margin-bottom {
+    margin-bottom: 12.5rem;
+    @media screen and (max-width: 767px) {
+      margin-bottom: 5rem;
+    }
+  }
+  // Border trong phần Cmt Amazing__TOP
+  &__border {
+    margin: 5rem 0;
+    height: 0.1rem;
+    background-color: #e5e5e5;
+    // border: 0.1rem solid #e5e5e5;
+    @media screen and (max-width: 767px) {
+      margin: 3rem 0 5rem;
+    }
+  }
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    display: flex;
+    // flex-direction: row;
+    align-items: flex-start;
+    width: 35rem; // hoac // width: calc(33% - 12.5px);
+    &-right {
+      margin-left: 3rem;
+      strong {
+        // margin-left: 3rem;
+        font-family: var(--secondary-font);
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: var(--gray-dark);
+      }
+      p {
+        font-family: var(--primary-font);
+        font-size: 1.5rem;
+        color: var(--gray-light);
+      }
+    }
+    @media screen and (max-width: 767px) {
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+  }
+}
+
+// Phần Unique ////////////////////////////////////////////////////////////////////////////////
+.unique {
+  position: relative;
+  background-image: url(../images/unique1.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  &__content {
+    text-align: center;
+    img {
+      display: inline-block;
+      margin: 5rem auto -9.6rem;
+      @media screen and (max-width: 767px) {
+        margin: 5rem auto -5.6rem;
+      }
+    }
+  }
+}
+
+// Phần Whatwedo ////////////////////////////////////////////////////////////////////////////////
+.whatwedo {
+  margin-bottom: 12rem;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  &__child {
+    width: 45%;
+    // max-height: 350px;
+    overflow: hidden;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+  &__item {
+    border: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 15px;
+    }
+    &-bottom{
+      p{
+        font-size: 2rem;
+        text-align: justify;
+      }
+    }
+    &-left {
+      display: flex;
+      align-items: center;
+      img {
+        padding-right: 1.5rem;
+      }
+      p {
+        text-transform: uppercase;
+        font-family: var(--secondary-font);
+        font-size: 1.4rem;
+      }
+    }
+     &-right{
+      cursor: pointer;
+      transition: 0.4s;
+      display: flex;
+      align-items: center;
+      }
+    &-bottom {
+      max-height: 15.5rem;
+      overflow-y: scroll;
+      padding: 20px;
+      display: none;
+    }
+  }
+  .is-active{
+    display: block;
+  }
+  .is-rotate{
+    transition: 0.4s;
+    transform: rotate(-180deg);
+  }
+}
+
+// Phần Quote ////////////////////////////////////////////////////////////////////////////////
+.quote {
+  padding: 7rem 0;
+  background-color: #f8f8f8;
+  // max-height: 29rem;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:first-child {
+      padding-left: 2.5rem;
+    }
+    &:last-child {
+      padding-right: 2.5rem;
+    }
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      img {
+        padding: 2rem;
+      }
+    }
+  }
+  &__quote {
+    p {
+      max-width: 77rem;
+      font-family: var(--primary-font);
+      font-style: italic;
+      color: var(--gray-light);
+      font-size: 15pt;
+    }
+    h3 {
+      position: relative;
+      font-family: var(--third-font);
+      font-size: 15pt;
+      padding-top: 2.2rem;
+      padding-left: 7rem;
+    }
+    h3:before {
+      position: absolute;
+      content: "";
+      top: 35px;
+      height: 2px;
+      left: 0;
+      width: 6rem;
+      background-color: var(--primary-color);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    padding: 3rem 0;
+  }
+}
+
+// Phần Ourteam ////////////////////////////////////////////////////////////////////////////////
+/////////////
+.ourteam {
+  margin-bottom: 11rem;
+  &__list {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    position: relative;
+    transition: 0.2s;
+    width: 32%;
+    &-gradient{
+      position: relative;
+      transition: 0.2s;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    &-info {
+      transition: 0.2s;
+      padding-top: 3rem;
+      text-align: center;
+      strong {
+        font-family: var(--secondary-font);
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+      h3 {
+        font-family: var(--primary-font);
+        color: var(--gray-light);
+        font-style: italic;
+        font-size: 1.5rem;
+      }
+    }
+    &-content {
+      position: absolute;
+      transition: 0.2s;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(230, 131, 131, 0.8),
+        rgba(241, 217, 137, 0.8)
+      );
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      border: 1px solid none;
+      i {
+        cursor: pointer;
+        height: 5.5rem;
+        width: 5.5rem;
+        font-size: 1.8rem;
+        padding: 21px;
+        color: #f38181;
+        background-color: #fce38a;
+      }
+      & i:hover {
+        color: white;
+        background-color: #f38181;
+      }
+    }
+    &-gradient:after {
+      position: absolute;
+      transition: 0.2s;
+      content: "";
+      // C1 : top,bottom,left,right deu = 0
+      // top: 0;
+      //  bottom: 0;
+      //  left: 0;
+      //  right: 0;
+      // C2 : top = 0 va width va height = 100% ;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+     // height: 100%;
+      background-color: var(--secondary-color);
+      z-index: -1;
+    }
+    &:hover {
+      transform: translate(-10px, -10px);
+      .ourteam__item-gradient:after {
+        transform: translate(10px, 10px);
+      }
+      .ourteam__item-content {
+        opacity: 1;
+        visibility: visible;
+      }
+      .ourteam__item-info {
+        transition: 0.2s;
+        transform: translate(10px, 10px);
+      }
+    }
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 10rem;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 0;
+  }
+}
+
+//// Brand/////////////////////////////////////////////////////////////////////////////////////////////////////
+.brand {
+  background-color: #f8f8f8;
+  height: 25rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+//// Our Work/////////////////////////////////////////////////////////////////////////////////////////////////////
+.ourwork {
+  &__content {
+    position: relative;
+    //height: 78rem;
+    display: flex;
+    justify-content: flex-start;
+    @media screen and (max-width: 767px) {
+      flex-wrap: wrap;
+    }
+  }
+  &__list {
+    position: relative;
+    transition: 0.2s;
+    //width: 25%;
+    //height: 78rem;
+    @media screen and (max-width: 767px) {
+      width: 50%;
+    }
+  }
+  &__item {
+    position: relative;
+    transition: 0.4s;
+    cursor: pointer;
+    img {
+      // width: 100%;
+      // height: 100%;
+      object-fit: cover;
+    }
+    &-content {
+      position: absolute;
+      transition: 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(230, 131, 131, 0.8),
+        rgba(241, 217, 137, 0.8)
+      );
+      opacity: 0;
+      visibility: hidden;
+    }
+    &:hover {
+      // transform: translate(-10px,-10px);
+      .ourwork__item-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Phần Quote  2   ////////////////////////////////////////////////////////////////////////////////
+.quote2 {
+  background-color: none;
+  // max-height: 29rem;
+  margin: 10rem 0rem 13rem;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:first-child {
+      padding-left: 2.5rem;
+    }
+    &:last-child {
+      padding-right: 2.5rem;
+    }
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      img {
+        padding: 3rem;
+      }
+    }
+  }
+  &__quote {
+    p {
+      max-width: 77rem;
+      font-family: var(--primary-font);
+      font-style: italic;
+      color: var(--gray-light);
+      font-size: 15pt;
+    }
+    h3 {
+      position: relative;
+      font-family: var(--third-font);
+      font-size: 15pt;
+      padding-top: 2.2rem;
+      padding-left: 7rem;
+    }
+    h3:before {
+      position: absolute;
+      content: "";
+      top: 35px;
+      height: 2px;
+      left: 0;
+      width: 6rem;
+      background-color: var(--primary-color);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    margin: 5rem 0rem 7rem;
+  }
+}
+
+// Phần Happy CLient   ////////////////////////////////////////////////////////////////////////////////
+.happyclient {
+  background-image: url(../images/happyclient.jpg);
+  background-position: center center;
+  background-attachment: fixed;
+  padding-bottom: 13rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &__nav {
+    padding-top: 8rem;
+  }
+  &__padding-bottom {
+    padding-bottom: 7rem;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__item {
+    //max-width: 52rem;
+    margin-right: 2rem;
+    display: flex;
+    align-items: flex-start;
+    &-content {
+      line-height: 1.5;
+      padding-left: 3rem;
+      strong {
+        font-family: var(--secondary-font);
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+      h3 {
+        position: relative;
+        font-family: var(--primary-font);
+        color: var(--gray-light);
+        font-style: italic;
+        font-size: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+      h3:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        // transform: translateX(-50%);
+        height: 0.3rem;
+        width: 6rem;
+        background-color: var(--primary-color);
+      }
+      p {
+        padding-top: 1.5rem;
+        font-size: 1.5rem;
+        text-align: justify;
+      }
+    }
+  }
+}
+// Happy CLient - Media Query ///////////////////////////////////////////////////////////////////////////
+@media screen and (max-width: 767px) {
+  .happyclient {
+    padding-bottom: 0;
+
+    &__padding-bottom{
+      padding-bottom: 0;
+    }
+    &__list {
+       flex-direction: column;
+    }
+    &__item {
+      margin-bottom: 5rem;
+      flex-direction: column;
+      img {
+        margin-bottom: 1.2rem;
+        margin: 0 auto;
+     // width: 100%;
+      }
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+      &-content {
+       
+        padding-left: 0px;
+        strong,h3{
+          display: block;
+          margin: 0 auto;
+          text-align: center;
+          font-size: 2rem;
+        }
+        h3:after{
+          left:50%;
+          transform: translateX(-50%);
+        }
+        p{
+          text-align: justify;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+// Phan Ourstories ////////////////////////////////////////////////////////////////////////////////////
+.ourstories {
+  margin-bottom: 11rem;
+  &__list {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 12rem;
+  }
+  &__item {
+    position: relative;
+    transition: 0.2s;
+    width: 32%;
+    height: 240px;
+    img {
+      // position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &-content {
+      position: absolute;
+      transition: 0.2s;
+      background-color: var(--secondary-color);
+      bottom: 0px;
+      height: 7rem;
+      width: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-10px, -10px);
+      color: white;
+      line-height: 1;
+      span {
+        font-family: var(--secondary-font);
+        font-size: 25pt;
+        font-weight: bold;
+      }
+      h3 {
+        font-family: var(--primary-font);
+        font-size: 10pt;
+        font-style: italic;
+      }
+    }
+    &-info {
+      position: absolute;
+      strong {
+        display: block;
+        padding: 1.8rem 0;
+        font-family: var(--secondary-font);
+        color: var(--gray-dark);
+        font-size: 12pt;
+        //font-weight: bold;
+      }
+      h3 {
+        padding-bottom: 2rem;
+        font-family: var(--primary-font);
+        font-size: 10pt;
+        color: var(--gray-light);
+      }
+      h3:after {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 100%;
+        bottom: 0px;
+        left: 0;
+        opacity: 0.5;
+        background-color: var(--gray-light);
+      }
+    }
+  }
+  &__icon {
+    padding-top: 2rem;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    img {
+      // width: 2rem;
+      // height: 1.2rem;
+      &:not(:first-child) {
+        margin-left: 2rem;
+      }
+    }
+    p {
+      margin-left: 0.5rem;
+    }
+  }
+}
+// Phan Ourstories - Media Screen ////////////////////////////////////////////////////////////////////////////////////
+@media screen and (max-width: 767px) {
+  .ourstories {
+    margin-bottom: 2rem;
+    &__list {
+      flex-direction: column;
+      padding-bottom: 0;
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 20rem;
+    }
+  }
+}
+
+// Phan OpenMap ////////////////////////////////////////////////////////////////////////////////////
+.openmap {
+  background-image: url(../images/openmap.jpg);
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    position: relative;
+    font-family: var(--secondary-font);
+    font-size: 24pt;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 1.2rem;
+    padding-bottom: 2.2rem;
+  }
+  h2:after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0.3rem;
+    width: 8rem;
+    background-color: var(--primary-color);
+  }
+}
+
+// Phan Footer ////////////////////////////////////////////////////////////////////////////////////
+.footer {
+  background-color: #f8f8f8;
+
+  &__content {
+    position: relative;
+    padding-bottom: 7rem;
+    padding-top: 7.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    &:after {
+      position: absolute;
+      content: "";
+      height: 1px;
+      bottom: 0;
+      background-color: var(--gray-light);
+      width: 100%;
+      opacity: 0.5;
+    }
+
+    .left {
+      object-fit: cover;
+      width: 40%;
+      margin-right: 4.5rem;
+      &__logo {
+        padding-bottom: 4rem;
+      }
+      &__content {
+        padding-bottom: 4.5rem;
+        font-family: var(--primary-font);
+        font-size: 10pt;
+        opacity: 0.7;
+         p{
+            text-align: justify;
+        }
+      }
+      &__note {
+        strong {
+          font-family: var(--secondary-font);
+          font-weight: bold;
+          font-size: 12pt;
+        }
+        span {
+          font-family: var(--secondary-font);
+          font-size: 10pt;
+        }
+        position: relative;
+        padding-bottom: 2rem;
+        margin-bottom: 1.5rem;
+        &:after {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          background-color: var(--gray-light);
+          opacity: 0.7;
+        }
+      }
+      &__icon {
+        padding-bottom: 4rem;
+        display: flex;
+        align-items: flex-start;
+        align-items: baseline;
+        strong {
+          font-family: var(--primary-font);
+          font-style: italic;
+          font-size: 10pt;
+          color: var(--gray-light);
+          padding-right: 2.5rem;
+        }
+        i {
+          font-size: 12pt;
+          color: var(--secondary-color);
+          padding-right: 1.2rem;
+        }
+      }
+      &__email {
+        width: 100%;
+        input[type="text"] {
+          width: 70%;
+          height: 4rem;
+          padding: 1.5rem;
+          font-style: italic;
+          opacity: 0.5;
+        }
+        input[type="button"] {
+          width: 29%;
+          height: 4rem;
+          border: none;
+          background-color: var(--secondary-color);
+          color: white;
+          font-weight: bold;
+          font-family: var(--secondary-font);
+        }
+      }
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    .mid {
+      width: 30%;
+      &__title {
+        padding-bottom: 4rem;
+        font-family: var(--secondary-font);
+        font-size: 10pt;
+        font-weight: bold;
+      }
+      &__item {
+        display: flex;
+        align-items: flex-start;
+        &:not(:last-child) {
+          padding-bottom: 2.7rem;
+        }
+        img {
+          margin-right: 2rem;
+        }
+        &-content {
+          p {
+            padding-top: 1.5rem;
+            font-family: var(--secondary-font);
+            font-size: 9pt;
+            font-weight: bold;
+            text-align: justify;
+          }
+          h3 {
+            padding-top: 1rem;
+            font-family: var(--primary-font);
+            color: var(--gray-light);
+            font-size: 8pt;
+            font-style: italic;
+          }
+        }
+      }
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    .right {
+      // width: 30%;
+      margin-left: 2rem;
+      &__title {
+        padding-bottom: 4rem;
+        font-family: var(--secondary-font);
+        font-size: 10pt;
+        font-weight: bold;
+      }
+      &__list {
+        display: flex;
+      }
+      &__item {
+        // display: flex;
+        img{
+          margin-right: 0.2rem;
+          margin-bottom: 0.2rem;
+         
+        }
+      }
+      &__info {
+        font-family: var(--primary-font);
+        font-style: italic;
+        color: var(--gray-light);
+        font-size: 10pt;
+      }
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  &__end {
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    img {
+      margin: 0 auto;
+    }
+  }
+}
+
+// Phan Footer - Media Screen ////////////////////////////////////////////////////////////////////////////////////
+@media screen and (max-width: 1024px) {
+  .footer {
+    &__content {
+     flex-direction: column;
+     flex-wrap: wrap;
+      .left {
+        padding-right: 0;
+        width: 100%;
+      }
+      .mid {
+        width: 100%;
+        margin-top:10rem;
+      }
+      .right {
+        width: 100%;
+        margin-top: 10rem;
+        margin-left: 0;
+      }
+    }
+  }
+}
