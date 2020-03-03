@@ -11,11 +11,18 @@ document.addEventListener("DOMContentLoaded",function(){
             for (let j = 0; j < wwdContent.length; j++) {
                 if (j!=i){
                     wwdButton[j].classList.remove('is-rotate');
-                    wwdContent[j].classList.remove('is-active');
+                    // wwdContent[j].classList.remove('is-active');
                 }
             }
             wwdButton[i].classList.toggle('is-rotate');
-            wwdContent[i].classList.toggle('is-active');
+            // wwdContent[i].classList.toggle('is-active');
+            if (wwdContent[i].style.maxHeight){
+                wwdContent[i].style.maxHeight = null;
+            }
+            else{
+                wwdContent[i].style.maxHeight = "15rem";
+            }
         });
     }  
+
 },false);
